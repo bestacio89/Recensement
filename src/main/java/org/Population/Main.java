@@ -1,13 +1,15 @@
 package org.Population;
 
-
+import org.Population.Helpers.CSVParser;
 import org.Population.Model.Ville;
+import org.Population.Repository.VilleRepository;
 import org.Population.Service.VilleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,12 +19,16 @@ public class Main implements CommandLineRunner {
     @Autowired
     private VilleService villeService;
 
+    @Autowired
+    private VilleRepository villeRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
     }
 
     @Override
     public void run(String... args) {
+        populateDatabaseIfEmpty();
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
@@ -101,5 +107,17 @@ public class Main implements CommandLineRunner {
             }
         }
         scanner.close();
+    }
+
+    private void populateDatabaseIfEmpty() {
+        if (villeRepository.count() == 0) {
+            try {
+                List<Ville> villes = CSVParser.parseCsvFile("path/to/your/csvfile.csv");
+                villeRepository.saveAll(villes);
+                System.out.println("Database populated with initial data.");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
