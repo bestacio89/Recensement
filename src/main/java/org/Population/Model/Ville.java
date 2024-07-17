@@ -11,6 +11,9 @@ public class Ville {
     private Long id;
 
     @Column(name = "code_region", nullable = false)
+    private String nomVille;
+
+    @Column(name = "code_region", nullable = false)
     private String codeRegion;
 
     @Column(name = "nom_region", nullable = false)
@@ -30,12 +33,13 @@ public class Ville {
     }
 
     // Parameterized constructor
-    public Ville(String codeRegion, String nomRegion, String codeDepartement, String codeCommune, int population) {
+    public Ville(String codeRegion, String nomRegion, String codeDepartement, String codeCommune, int population, String nom) {
         this.codeRegion = codeRegion;
         this.nomRegion = nomRegion;
         this.codeDepartement = codeDepartement;
         this.codeCommune = codeCommune;
         this.population = population;
+        this.nomVille = nom;
     }
 
     // Getters and Setters
@@ -86,4 +90,9 @@ public class Ville {
     public void setPopulation(int population) {
         this.population = population;
     }
+
+    public String getNomVille() {
+        return nomVille;
+    }
+
 }

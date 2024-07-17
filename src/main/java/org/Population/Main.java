@@ -42,7 +42,8 @@ public class Main implements CommandLineRunner {
             System.out.println("6. Population of a region");
             System.out.println("7. Population of a ville");
             System.out.println("8. 10 most populated villes in France");
-            System.out.println("9. Exit");
+            System.out.println("9. Most Populate ville in France");
+            System.out.println("10. Exit");
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
@@ -99,7 +100,15 @@ public class Main implements CommandLineRunner {
                     List<Ville> topVilles = villeService.findTop10MostPopulatedVilles();
                     topVilles.forEach(v -> System.out.println("Ville: " + v.getCodeCommune() + ", Population: " + v.getPopulation()));
                     break;
-                case 9:
+                case 9 :
+                    Ville ville = villeService.findMostPopulatedVilleInFrance();
+                    String message = String.format("La Ville la plus peuplée en France est: %s population: %d",
+                                ville.getNomVille(), ville.getPopulation());
+                    System.out.println(message);
+                    break;
+
+
+                case 10:
                     running = false;
                     break;
                 default:
