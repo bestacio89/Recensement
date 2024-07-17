@@ -33,7 +33,7 @@ public class Ville {
     }
 
     // Parameterized constructor
-    public Ville(String codeRegion, String nomRegion, String codeDepartement, String codeCommune, int population, String nom) {
+    public Ville(String codeRegion, String nom, String nomRegion, String codeDepartement, String codeCommune, int population ) {
         this.codeRegion = codeRegion;
         this.nomRegion = nomRegion;
         this.codeDepartement = codeDepartement;

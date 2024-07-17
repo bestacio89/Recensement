@@ -106,8 +106,6 @@ public class Main implements CommandLineRunner {
                                 ville.getNomVille(), ville.getPopulation());
                     System.out.println(message);
                     break;
-
-
                 case 10:
                     running = false;
                     break;

@@ -24,7 +24,7 @@ public class VilleService {
                     .entrySet().stream()
                     .sorted((e1, e2) -> Integer.compare(e2.getValue(), e1.getValue()))
                     .limit(10)
-                    .map(entry -> new Ville(entry.getKey(), null, null, null, entry.getValue()))
+                    .map(entry -> new Ville(entry.getKey(),null, null, null, null, entry.getValue()))
                     .collect(Collectors.toList());
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,7 +40,7 @@ public class VilleService {
                     .entrySet().stream()
                     .sorted((e1, e2) -> Integer.compare(e2.getValue(), e1.getValue()))
                     .limit(10)
-                    .map(entry -> new Ville(null, entry.getKey(), null, null, entry.getValue()))
+                    .map(entry -> new Ville(entry.getKey(),null, null, null, null, entry.getValue()))
                     .collect(Collectors.toList());
         } catch (Exception e) {
             e.printStackTrace();
